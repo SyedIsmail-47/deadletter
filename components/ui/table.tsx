@@ -27,7 +27,7 @@ export function Table({ columns, rows }: { columns: Column[]; rows: Array<Record
                     {rows.map((row) => (
                         <tr key={row.id}>
                             {columns.map((column) => (
-                                <td key={column.id} className={column.mono ? "mono" : undefined}>
+                                <td key={column.id} className={column.mono ? "mono" : undefined} data-label={column.header}>
                                     {row[column.id]}
                                 </td>
                             ))}

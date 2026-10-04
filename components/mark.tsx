@@ -1,0 +1,9 @@
+export function Mark() {
+    return (
+        <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+            <rect x="3.5" y="8" width="25" height="16" fill="none" stroke="currentColor" strokeWidth="1.75" />
+            <path d="M4 8.5 L16 17 L28 8.5" fill="none" stroke="currentColor" strokeWidth="1.75" />
+            <path d="M7 25 L25 7" fill="none" stroke="currentColor" strokeWidth="1.75" />
+        </svg>
+    );
+}

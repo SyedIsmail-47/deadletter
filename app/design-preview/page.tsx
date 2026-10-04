@@ -1,8 +1,9 @@
+import { LiveCheck } from "@/components/motion/live-check";
+import { SiteHeader } from "@/components/site-header";
 import { Badge, VERDICTS } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Table } from "@/components/ui/table";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Swatches } from "./swatches";
 
 const SAMPLE = [
@@ -25,17 +26,7 @@ export default async function DesignPreviewPage({
 
     return (
         <main className="sheet">
-            <header className="topbar">
-                <a className="brand" href="/design-preview">
-                    <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
-                        <rect x="3.5" y="8" width="25" height="16" fill="none" stroke="currentColor" strokeWidth="1.75" />
-                        <path d="M4 8.5 L16 17 L28 8.5" fill="none" stroke="currentColor" strokeWidth="1.75" />
-                        <path d="M7 25 L25 7" fill="none" stroke="currentColor" strokeWidth="1.75" />
-                    </svg>
-                    Deadletter
-                </a>
-                <ThemeToggle />
-            </header>
+            <SiteHeader links={[{ href: "/dashboard", label: "Jobs" }]} />
 
             <div className="block lead">
                 <h1>Design preview</h1>
@@ -89,6 +80,12 @@ export default async function DesignPreviewPage({
                         checked: row.checked,
                     }))}
                 />
+            </section>
+
+            <section className="block">
+                <h2>Live status</h2>
+                <p className="muted measure">Each address shows up as it resolves. This is the only results animation.</p>
+                <LiveCheck />
             </section>
 
             <section className="block">

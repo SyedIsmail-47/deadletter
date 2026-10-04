@@ -55,7 +55,7 @@ Verdict colors shift toward their lighter/desaturated counterparts for dark-mode
 - Left-aligned, grid-precise. Not centered, not justified.
 - Hairline dividers (`border` token) instead of rounded cards with drop-shadows.
 - Zero or minimal border-radius (2-4px max) — sharp edges read as instrument-grade, not plush consumer app.
-- One deliberate motion moment: the live queued → processing → done status transition. No hover effects scattered across every card, no fade-slide-up entrance per section.
+- Motion is specified in the Motion section. Do not add hover effects on cards or fade-slide-up entrances on ordinary sections.
 
 ## Component guidance
 - **Status badges:** small rectangular tags (not pill-shaped chips), using the exact verdict hex values, with the status name in plain text (not an icon substituting for the word).
@@ -63,6 +63,18 @@ Verdict colors shift toward their lighter/desaturated counterparts for dark-mode
 - **Upload flow:** drag-and-drop zone with a visible, specific instruction ("Drop a CSV, or paste emails one per line") — not a vague "Upload file" label.
 - **Empty states:** treat as an invitation to act, not a mood illustration. E.g., no jobs yet → direct CTA to start one, plain language, no filler copy or mascot graphic.
 - **Job progress:** show real state (queued / processing N of M / done), not a generic spinner with no information.
+
+## Motion
+
+Animation reinforces a precision instrument. It is not decoration. Do not add hover motion, entrance motion, or parallax to cards, lists, or sections by default.
+
+- **Framer Motion** is for product state, not ornament:
+  - Live job status (queued, then processing, then done) and result rows appearing as each address resolves. Opacity only, about 180ms, linear. This is the one animation that shows work happening.
+  - Button press (`scale` 0.98) and a slight hover opacity change. No spring, no shadow, no arrow.
+  - Dashboard route changes only: a 150ms opacity fade in `app/dashboard/template.tsx`. The landing page does not use this.
+- **GSAP (ScrollTrigger)** is used only on the public landing page, and only on the three differentiator statements. Do not also run Framer Motion on those elements. The hero and the problem statement stay still.
+- **Three.js** is not part of the product. Do not add a WebGL or particle background.
+- When `prefers-reduced-motion: reduce` is set, skip the scroll reveal and the status fade. State changes stay instant.
 
 ## Dark mode
 True dark mode with its own token set above — not an inverted filter. Same accent and verdict-color logic, rebalanced for contrast.
